@@ -1,0 +1,48 @@
+# -- EXPORTS
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export ZSH_PATINA_CONFIG_PATH="$HOME/.config/zsh/plugins/zsh-patina/config.toml"
+export BUN_INSTALL="$HOME/.bun" 
+export PATH="$BUN_INSTALL/bin:$PATH"
+export FNM_PATH="/home/a66ro/.local/share/fnm"
+export EDITOR="nvim"
+
+setopt NO_CASE_GLOB
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+setopt autocd
+
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' $ZDOTDIR/.zcompdump 2>/dev/null)" ]; then
+    compinit
+else
+    compinit -C
+fi
+# End of lines configured by zsh-newuser-install
+. $HOME/.cargo/env
+
+fpath=(~/.config/zsh/plugins/zsh-completions/src $fpath)
+source <(fzf --zsh)
+
+# fnm
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  source "$HOME/.config/zsh/plugins/zsh-completions/src/_fnm"
+  eval "$(fnm env --shell zsh)"
+fi
+
+eval "$($HOME/.config/zsh/plugins/zsh-patina/zsh-patina activate)"
+eval "$(starship init zsh)"
+
+# bun completions
+[ -s "/home/a66ro/.bun/_bun" ] && source "/home/a66ro/.bun/_bun"
+# eval "$(zoxide init zsh)"
+
+alias ls='eza'
+alias la='eza -a'
+alias v='nvim'
+# alias img="kitten icat"
+alias vv='NVIM_APPNAME=nvim.bak nvim'

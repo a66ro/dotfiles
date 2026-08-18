@@ -1,0 +1,12 @@
+-- ~/.config/wezterm-projects/(projectname).lua
+return {
+  workspace = "my-project",
+  cwd = "~/projects/my-project",
+  tabs = {
+    { cmd = "nvim" },
+    { cmd = "docker compose up" },
+    { cmd = nil },  -- empty shell
+  },
+}
+
+-- vim: syntax=lua

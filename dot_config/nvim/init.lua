@@ -1,0 +1,6 @@
+vim.loader.enable(true)
+require('options')
+require('lsp')
+require('plugins')
+require('autocmds')
+require('keymaps')
