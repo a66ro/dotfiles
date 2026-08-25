@@ -53,9 +53,9 @@ require('blink.cmp').setup {
 
   completion = {
     -- trigger = {
-    --         show_on_keyword = false,
-    --         show_on_trigger_character = false,
-    --     },
+    --   show_on_keyword = false,
+    --   show_on_trigger_character = false,
+    -- },
     -- By default, you may press `<c-space>` to show the documentation.
     -- Optionally, set `auto_show = true` to show the documentation after a delay.
     documentation = {
@@ -71,19 +71,6 @@ require('blink.cmp').setup {
 
   sources = {
     default = { 'lsp', 'path', 'snippets' },
-    providers = {
-      snippets = {
-        should_show_items = function(ctx)
-          local node = vim.treesitter.get_node()
-
-          if node then
-            local node_type = node:type()
-            if node_type:find 'string' or node_type:find 'comment' then return false end
-          end
-          return true
-        end,
-      },
-    },
   },
 
   snippets = { preset = 'luasnip' },

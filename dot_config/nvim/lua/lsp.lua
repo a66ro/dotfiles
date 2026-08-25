@@ -27,16 +27,16 @@ local servers = {
   vtsls = {},
   standardjs = {},
 
-  -- superhtml = {},
+  superhtml = {},
   -- cssls = {},
-  rust_analyzer = {},
+  -- rust_analyzer = {},
   stylua = {}, -- Used to format Lua code
   lua_ls = {},
   basedpyright = {},
-  -- clangd = {},
-  gopls = {},
-  goimports = {},
-  zls = {},
+  clangd = {},
+  -- gopls = {},
+  -- goimports = {},
+  -- zls = {},
 }
 
 -- Ensure the servers and tools above are installed

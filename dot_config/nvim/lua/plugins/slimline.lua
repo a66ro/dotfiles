@@ -13,8 +13,8 @@ require('slimline').setup {
     base_inactive = 'StatusLineNC',
   },
   configs = {
-    progress = {
-      follow = false,
+    mode = {
+      verbose = true,
     },
   },
 }

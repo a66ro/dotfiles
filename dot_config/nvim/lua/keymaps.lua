@@ -1,5 +1,5 @@
 local keymap = vim.keymap.set
--- local s = { silent = true }
+local s = { silent = true }
 
 keymap('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
@@ -7,6 +7,13 @@ keymap('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 keymap('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 keymap('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 keymap('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+keymap('n', '<C-d>', '<C-d>zz')
+keymap('n', '<C-u>', '<C-u>zz')
+
+keymap('v', 'J', ":m '>+1<CR>>gv=gv", s)
+keymap('v', 'K', ":m '>-2<CR>>gv=gv", s)
+
 
 vim.diagnostic.config {
   update_in_insert = false,
@@ -31,8 +38,3 @@ vim.diagnostic.config {
 }
 
 keymap('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-
--- local minifiles_toggle = function(...)
---   if MiniFiles.close() == nil then MiniFiles.open(...) end
--- end
--- keymap('n', '<leader>e', minifiles_toggle, { desc = 'Open MiniFiles' })

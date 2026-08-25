@@ -1,0 +1,1 @@
+-- vim.pack.add { 'https://github.com/jim-at-jibba/micropython.nvim' }

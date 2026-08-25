@@ -7,23 +7,23 @@ vim.pack.add {
   },
 }
 require('rose-pine').setup {
-  variant = 'moon',
+  variant = 'main',
   styles = {
-    bold = false,
+    bold = true,
     italic = false,
     transparency = false,
   },
 }
-require('catppuccin').setup {
-  flavour = 'mocha',
-  no_italic = true,
-  no_bold = false,
-  auto_integrations = true,
-  -- transparent_background = true,
-  integrations = {
-    telescope = true,
-  },
-}
+-- require('catppuccin').setup {
+--   flavour = 'mocha',
+--   no_italic = true,
+--   no_bold = false,
+--   auto_integrations = true,
+-- transparent_background = true,
+--   integrations = {
+--     telescope = true,
+--   },
+-- }
 -- require("everforest").setup({
 --   -- Your config here
 --     background = 'hard',

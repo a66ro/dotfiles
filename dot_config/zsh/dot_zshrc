@@ -1,8 +1,7 @@
 # -- EXPORTS
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export ZSH_PATINA_CONFIG_PATH="$HOME/.config/zsh/plugins/zsh-patina/config.toml"
 export BUN_INSTALL="$HOME/.bun" 
-export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$BUN_INSTALL/bin:$PATH:$HOME/.local/bin"
 export FNM_PATH="/home/a66ro/.local/share/fnm"
 export EDITOR="nvim"
 
@@ -45,4 +44,6 @@ alias ls='eza'
 alias la='eza -a'
 alias v='nvim'
 # alias img="kitten icat"
-alias vv='NVIM_APPNAME=nvim.bak nvim'
+# alias vv='NVIM_APPNAME=nvim.bak nvim'
+
+. "$HOME/.local/bin/env"
