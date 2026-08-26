@@ -24,7 +24,7 @@ set {
 #
 # Terminal:
 #
-set $term wezterm
+set $term ghostty +new-window
 
 default_border pixel 2
 default_floating_border pixel 2
@@ -37,14 +37,14 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 
 exec mako # Notification daemon
 
-exec_always swaymsg output "*" bg "$(find ~/.config/sway/wallpapers/ -type f | shuf -n 1)" fill
+# exec_always swaymsg output "*" bg "$(find ~/.config/sway/wallpapers/ -type f | shuf -n 1)" fill
 
 # Focus layout
 #
-# output * bg #3c3836 solid_color
-# gaps outer 2
-# smart_borders on
-# smart_gaps inverse_outer
+output * bg #3c3836 solid_color
+gaps outer 2
+smart_borders on
+smart_gaps inverse_outer
 
 #-----------------
 # Aesthetic layout
@@ -55,16 +55,9 @@ exec_always swaymsg output "*" bg "$(find ~/.config/sway/wallpapers/ -type f | s
   # background ~/.config/sway/wallpaper.png fill
 # }
 
-gaps inner 6
-# gaps outer 0
-smart_borders on
-smart_gaps off
-
 # gaps inner 6
-# gaps outer 2
 # smart_borders on
-# smart_gaps on
-# smart_gaps inverse_outer
+# smart_gaps off
 
 input {
   type:pointer {
@@ -273,7 +266,7 @@ client.urgent           $red $red $accent $red $red
 #
 # Disable xwayland
 #
-xwayland disable
+# xwayland disable
 
 #
 # Status Bar:

@@ -1,6 +1,6 @@
 theme = Rose Pine
 font-feature = -calt
-font-family = Ioskeley Mono Term Medium
+font-family = "Ioskeley Mono Term Medium"
 font-family = "Symbols Nerd Font"
 font-size = 14
 cursor-style = block
