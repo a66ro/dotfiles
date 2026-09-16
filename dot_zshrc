@@ -1,0 +1,104 @@
+# =============================================================================
+# Environment
+# =============================================================================
+
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH:$HOME/.local/bin"
+
+# fnm
+export FNM_PATH="$HOME/.local/share/fnm"
+
+# Editor
+export EDITOR="nvim"
+
+# =============================================================================
+# Zsh Options
+# =============================================================================
+
+# Case-insensitive globbing
+setopt NO_CASE_GLOB
+
+# Automatically cd when typing a directory
+setopt AUTO_CD
+
+# =============================================================================
+# History
+# =============================================================================
+
+HISTFILE="$HOME/.histfile"
+HISTSIZE=1000
+SAVEHIST=1000
+
+# =============================================================================
+# Completion
+# =============================================================================
+
+autoload -Uz compinit
+
+# Use cached completions unless the cache doesn't exist.
+if [[ -r "$HOME/.zcompdump" ]]; then
+    compinit -C
+else
+    compinit
+fi
+
+# Case-insensitive and flexible completion matching
+zstyle ':completion:*' matcher-list \
+    'm:{[:lower:]}={[:upper:]}' \
+    'r:|[._-]=* r:|=*' \
+    'l:|=* r:|=*'
+
+# zsh-completions
+fpath=(
+    "$HOME/.config/zsh/plugins/zsh-completions/src"
+    $fpath
+)
+
+# =============================================================================
+# External Environment
+# =============================================================================
+
+# Rust / Cargo
+[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
+# Local environment
+[[ -f "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
+
+# =============================================================================
+# FZF
+# =============================================================================
+#
+# if command -v fzf &>/dev/null; then
+#     source <(fzf --zsh)
+# fi
+
+#### fnm - Fast Node Manager ####
+if [[ -d "$FNM_PATH" ]]; then
+    export PATH="$FNM_PATH:$PATH"
+
+    # fnm completion
+    # if [[ -f "$HOME/.config/zsh/plugins/zsh-completions/src/_fnm" ]]; then
+    #     source "$HOME/.config/zsh/plugins/zsh-completions/src/_fnm"
+    # fi
+
+    # fnm environment
+    eval "$(fnm env --shell zsh)"
+fi
+
+#### Starship ####
+if command -v starship &>/dev/null; then
+    eval "$(starship init zsh)"
+fi
+
+#### Bun Completion ####
+[[ -s "$BUN_INSTALL/_bun" ]] && source "$BUN_INSTALL/_bun"
+
+#### Aliases ####
+alias ls='eza'
+alias la='eza -a'
+alias ll='eza -la'
+alias v='nvim'
+alias vim='nvim'
+
+[ -f "/home/a66ro/.ghcup/env" ] && . "/home/a66ro/.ghcup/env" # ghcup-env
