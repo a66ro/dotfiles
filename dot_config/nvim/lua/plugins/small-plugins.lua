@@ -1,13 +1,4 @@
-vim.pack.add {
-  'https://github.com/windwp/nvim-autopairs',
-  'https://github.com/brianhuster/live-preview.nvim',
-  'https://github.com/m4xshen/smartcolumn.nvim',
-  'https://github.com/folke/todo-comments.nvim',
-  'https://github.com/cosmicbuffalo/eyeliner.nvim',
-  -- 'https://github.com/lukas-reineke/indent-blankline.nvim',
-}
-
-local smartcolumnConfig = {
+require('smartcolumn').setup {
   colorcolumn = '80',
   disabled_filetypes = {
     'help',
@@ -16,18 +7,16 @@ local smartcolumnConfig = {
     'mason',
     'lspinfo',
     'checkhealth',
-    'minifiles',
     'qf',
+    'oil',
   },
   custom_colorcolumn = {},
   scope = 'file',
   editorconfig = true,
 }
+require('todo-comments').setup { signs = false }
 
-require('smartcolumn').setup(smartcolumnConfig)
-require('todo-comments').setup {}
-
-require('nvim-autopairs').setup { check_ts = true }
+-- require('nvim-autopairs').setup { check_ts = true }
 
 require('eyeliner').setup { dim = true }
 
@@ -35,4 +24,3 @@ require('eyeliner').setup { dim = true }
 --   indent = { char = '╎' },
 --   scope = { enabled = false },
 -- }
---

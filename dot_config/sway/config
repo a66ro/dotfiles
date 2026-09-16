@@ -17,6 +17,7 @@ set {
   $menu fuzzel
   $power ~/.config/fuzzel/powermenu | swaymsg
   # $projects rofi -show projectmenu |swaymsg
+  $screenshot ~/.config/sway/screenshot.sh
   $browser firefox
   $nt-center swaync-client -t
 }
@@ -24,7 +25,8 @@ set {
 #
 # Terminal:
 #
-set $term ghostty +new-window
+# set $term "ghostty +new-window"
+set $term "foot"
 
 default_border pixel 2
 default_floating_border pixel 2
@@ -32,8 +34,8 @@ default_floating_border pixel 2
 # Set cursor theme
 seat seat0 xcursor_theme 'Breeze_Light' 24
 
-exec systemctl --user start hyprpolkitagent
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 
 exec mako # Notification daemon
 
@@ -41,23 +43,19 @@ exec mako # Notification daemon
 
 # Focus layout
 #
-output * bg #3c3836 solid_color
-gaps outer 2
-smart_borders on
-smart_gaps inverse_outer
+# output * bg #3c3836 solid_color
+# gaps outer 2
+# smart_borders on
+# smart_gaps inverse_outer
 
 #-----------------
 # Aesthetic layout
 #-----------------
 #
-# output * {
-  # scale 1.25
-  # background ~/.config/sway/wallpaper.png fill
-# }
-
-# gaps inner 6
-# smart_borders on
-# smart_gaps off
+output * background ~/.config/sway/wallpapers/wallhaven-e76pew.png fill
+gaps inner 6
+smart_borders on
+smart_gaps off
 
 input {
   type:pointer {
@@ -76,6 +74,8 @@ input {
     xkb_layout "us,real-prog-dvorak"
     # xkb_variant "altgr-intl,nodeadkeys"
     xkb_options "grp:alt_shift_toggle,caps:escape"
+    repeat_delay 250
+    repeat_rate 40
   }
 
 #  type:touch {
@@ -95,7 +95,11 @@ bindsym {
   $mod+e exec $file
   $mod+q exec $power
   $mod+z exec swaylock
+  $mod+s exec $screenshot screen
+  $mod+Shift+s exec $screenshot region
+  $mod+Ctrl+s exec $screenshot window
   $mod+Shift+c reload
+
   # $mod+p exec $projects
 }
 
@@ -209,45 +213,6 @@ bindsym {
 #
 ### Screenshot mode:
 #
-set {
-  $screenshot " Screenshot: [s]creen [w]window [r]egion"
-
-  $screenshot-cmd ~/.config/sway/screenshot.sh
-}
-
-mode $screenshot {
-  bindsym --to-code {
-    s mode "default", exec $screenshot-cmd screen
-    w mode "default", exec $screenshot-cmd window 
-    r mode "default", exec $screenshot-cmd region 
-
-    Return mode "default"
-    Escape mode "default"
-    $mod+x mode "default"
-  }
-}
-
-bindsym --to-code $mod+s mode $screenshot
-
-set {
-  $layout " Layout: [F]ocus [N]ormal"
-  $layout-cmd ~/.config/sway/layout.sh
-}
-
-mode $layout {
-  bindsym --to-code {
-    f mode "default", exec $layout-cmd focus
-    n mode "default", exec $layout-cmd normal
-
-    Return mode "default"
-    Escape mode "default"
-    $mod+x mode "default"
-  }
-}
-
-bindsym --to-code $mod+i mode $layout
-
-
 ### Theming
 #
 # Colors:
@@ -267,6 +232,11 @@ client.urgent           $red $red $accent $red $red
 # Disable xwayland
 #
 # xwayland disable
+
+for_window [app_id="com.ktechpit.whatsie" title="Downloads"] floating enable
+for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
+for_window [app_id="zenity"] floating enable
+for_window [app_id="firefox" title="^Picture-in-Picture"] floating enable, resize set 1280 720
 
 #
 # Status Bar:

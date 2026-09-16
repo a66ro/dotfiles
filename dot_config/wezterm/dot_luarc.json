@@ -1,5 +1,0 @@
-{
-    "workspace.library": [
-        "$HOME/.luarocks/share/lua/5.5"
-    ]
-}

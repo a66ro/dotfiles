@@ -1,20 +1,23 @@
-vim.pack.add { 'https://github.com/sschleemilch/slimline.nvim' }
 require('slimline').setup {
   style = 'fg',
-  spaces = {
-    components = '',
-    left = '',
-    right = '',
-  },
   hl = {
     primary = 'StatusLine',
     secondary = 'StatusLineNC',
     base = 'StatusLine',
     base_inactive = 'StatusLineNC',
   },
+  spaces = {
+    components = '',
+    left = '',
+    right = '',
+  },
   configs = {
     mode = {
       verbose = true,
+    },
+
+    progress = {
+      follow = false,
     },
   },
 }

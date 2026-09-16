@@ -1,11 +1,3 @@
-vim.pack.add {
-  { src = 'https://github.com/catppuccin/nvim', name = 'catppuccin' },
-  -- "https://github.com/neanias/everforest-nvim"
-  {
-    src = 'https://github.com/rose-pine/neovim',
-    name = 'rose-pine',
-  },
-}
 require('rose-pine').setup {
   variant = 'main',
   styles = {
@@ -13,22 +5,26 @@ require('rose-pine').setup {
     italic = false,
     transparency = false,
   },
+  palette = {
+    main = {
+      pine = '#3e8fb0',
+    },
+  },
+  highlight_groups = {
+    --   TelescopeBorder = { fg = 'overlay', bg = 'overlay' },
+    --   TelescopeNormal = { fg = 'subtle', bg = 'overlay' },
+    --   TelescopeSelection = { fg = 'text', bg = 'highlight_med' },
+    --   TelescopeSelectionCaret = { fg = 'love', bg = 'highlight_med' },
+    --   TelescopeMultiSelection = { fg = 'text', bg = 'highlight_high' },
+    --
+    --   TelescopeTitle = { fg = 'base', bg = 'love' },
+    --   TelescopePromptTitle = { fg = 'base', bg = 'pine' },
+    --   TelescopePreviewTitle = { fg = 'base', bg = 'iris' },
+    --
+    --   TelescopePromptNormal = { fg = 'text', bg = 'surface' },
+    --   TelescopePromptBorder = { fg = 'surface', bg = 'surface' },
+    ['@keyword.operator'] = { fg = 'pine' },
+  },
 }
--- require('catppuccin').setup {
---   flavour = 'mocha',
---   no_italic = true,
---   no_bold = false,
---   auto_integrations = true,
--- transparent_background = true,
---   integrations = {
---     telescope = true,
---   },
--- }
--- require("everforest").setup({
---   -- Your config here
---     background = 'hard',
--- })
 
--- vim.cmd.colorscheme 'catppuccin-nvim'
-vim.cmd 'colorscheme rose-pine'
--- vim.cmd.colorscheme 'everforest'
+vim.cmd.colorscheme 'rose-pine'

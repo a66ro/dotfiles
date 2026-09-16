@@ -1,1 +1,5 @@
--- vim.pack.add { 'https://github.com/jim-at-jibba/micropython.nvim' }
+-- To enable it, add the plugin to lua/plugins/init.lua:
+--
+-- gh 'jim-at-jibba/micropython.nvim'
+--
+-- Then configure it here.

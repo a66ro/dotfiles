@@ -1,11 +1,3 @@
-vim.pack.add {
-  {
-    src = 'https://github.com/vieitesss/miniharp.nvim',
-    version = vim.version.range 'v*', -- latest stable release
-    -- version = 'nightly', -- latest changes from main
-  },
-}
-
 local miniharp = require 'miniharp'
 
 miniharp.setup {
